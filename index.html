@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script lang="JavaScript">
+
+        // tipos numéricos
+        //primitivos
+        let texto = "jorge"
+        console.log(typeof texto) //string
+
+        let numero = 3.4
+        console.log(typeof numero) //number
+
+        let indefinido
+        console.log(typeof infefinido) //undefined
+
+        let nulo = null
+        console.log(typeof nulo) // objeto null
+
+        let numeroGrande = 12345678901234567890n
+        console.log(typeof numeroGrande) //bigint
+
+        // tipos compuestos
+        let persona = {
+            nombre: "jorge",
+            apellido: "DellaGaspera",
+            edad: 55
+        }
+        console.log(typeof persona) //object
+        console.log(typeof persona.nombre) //propiedad tipo string
+        console.log(typeof persona.edad) //propiedad tipo number
+
+        // tipo array o lista
+        let colores = ["rojo", "azul", "amarillo"]
+        console.log("tipo de colores: "+typeof colores) //object
+        console.log("tipo elemento de colores: "+typeof colores[0]) //string
+
+        // tipo map o diccionario
+        let mapa = new Map()
+        mapa.set("clave", "valor")
+        console.log("tipo de Map: "+typeof mapa) //object
+        console.log("tipo de valor en Map: "+typeof mapa.keys("clave"))
+        console.log("Clave del Map: ",mapa.keys())
+        console.log("Valor del Map: ",mapa.values())
+
+        // tipo conjunto
+        let conjunto = new Set([1,2,3,4])
+        console.log(typeof conjunto) //object
+        conjunto.forEach(valor => { console.log("valor:", valor, "tipo:",typeof valor)})
+    </script>
+</body>
+</html>

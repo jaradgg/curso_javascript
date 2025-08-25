@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script lang="JavaScript">
+        /*La desestructuración de objetos en JavaScript es una técnica que 
+        permite extraer propiedades de un objeto y asignarlas a variables 
+        de manera sencilla y clara.Esto se logra utilizando una sintaxis 
+        especial que mejora la legibilidad del código.
+
+        Ejemplo básico:*/
+
+        const persona = {
+            nombre: "Juan",
+            edad: 30,
+            ciudad: "Mendoza"
+        };
+
+        // Desestructuración
+        const { nombre, edad } = persona;
+
+        console.log(nombre); // "Juan"
+        console.log(edad);   // 30
+    </script>
+</body>
+
+</html>

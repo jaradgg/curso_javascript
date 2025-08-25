@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script lang="JavaScript">
+
+        // variables del tipo lógico
+        let verdadero = true
+        let falso = false
+        let v = Boolean(true)  //objeto del tipo booleano
+        let f = Boolean(false)
+
+        console.log(verdadero, falso, v, f)
+        console.log(typeof (verdadero), typeof (falso))
+
+        /*
+        In JavaScript, a truthy value is any value that is considered true when evaluated in a Boolean context, such as in conditional statements (if, while, etc.). By default, all values in JavaScript are truthy unless they are explicitly defined as falsy.
+
+        Examples of Truthy Values
+        Here are some common examples of truthy values:
+
+        Non-empty strings: "hello", "0", "false"
+        Non-zero numbers: 42, -1, 3.14
+        Objects: {}, []
+        Functions: function() {}, () => {}
+        The boolean true
+        Falsy Values
+        For contrast, the following are the falsy values in JavaScript:
+
+        false
+        0, -0
+        0n (BigInt zero)
+        "" (empty string)
+        null
+        undefined
+        NaN
+        document.all (historical quirk)
+        Usage in Conditional Statements
+        Truthy values are often used in conditions:
+        */
+        if ("hello") {
+        console.log("This is truthy!"); // This will execute
+        }
+
+        if (42) {
+        console.log("Numbers other than 0 are truthy!"); // This will execute
+        }
+       
+        /*
+        In JavaScript, falsy values are values that evaluate to false in a Boolean context, such as in conditionals (if, while, etc.). There are exactly six falsy values:
+
+        false - The Boolean value false.
+        0 - The number zero.
+        "" - An empty string (both single and double quotes).
+        null - Represents the intentional absence of any value.
+        undefined - A variable that has been declared but not assigned a value.
+        NaN - "Not-a-Number," typically resulting from invalid mathematical operations.
+        */
+
+        console.log(Boolean(-1))
+        console.log(Boolean(0))
+        if (!0) {
+            console.log("0 is falsy!"); // This will execute.
+        }
+
+        if (!undefined) {
+            console.log("undefined is falsy!"); // This will execute.
+        }
+    </script>
+</body>
+
+</html>
