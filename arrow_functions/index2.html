@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>  
+    <script lang="JavaScript">
+
+        /* cuántos tipos de funciones existen en javascript desde el 
+        ECMACScript vigente? puedes darme ejemplos de implementación y 
+        cuál sea el propósito de su uso?
+        Excelente pregunta 👏👏.
+        En **JavaScript moderno (ES6+ / ECMAScript vigente 2025)** 
+        existen **varios tipos de funciones**, cada una pensada para 
+        diferentes escenarios.
+
+        Te hago un resumen con ejemplos y propósito de uso:
+
+        ---
+
+        ## 🔹 1. **Declaración de función (Function Declaration)**
+
+        ```javascript */
+        function saludar(nombre) {
+            return `Hola, ${nombre}`;
+        }
+        console.log(saludar("Jorge")); // Hola, Jorge
+
+
+        /* ✅ **Características**:
+
+        * Se pueden usar antes de ser declaradas (hoisting).
+        * Claras y legibles, útiles para funciones "normales".
+
+        **Uso**: Funciones generales, reutilizables en todo el código.
+
+        ---
+
+        ## 🔹 2. **Expresión de función (Function Expression)**
+
+        ```javascript */
+        const despedir = function (nombre) {
+            return `Adiós, ${nombre}`;
+        };
+        console.log(despedir("Jorge")); // Adiós, Jorge
+        /* <!-- ```
+        
+        ✅ **Características**:
+        
+        * Guardadas en variables.
+        * No se "levantan" (no hay hoisting).
+        * Útiles para funciones más controladas o que dependen de contexto.
+        
+        **Uso**: Cuando querés asignar una función a una variable, objeto o pasarla como argumento.
+        
+        ---
+        
+        ## 🔹 3. **Funciones flecha (Arrow Functions, ES6)**
+        
+        ```javascript */
+        const sumar = (a, b) => a + b;
+        console.log(sumar(3, 4)); // 7
+        /* 
+        
+        ✅ **Características**:
+        
+        * Sintaxis corta.
+        * No tienen su propio `this` → heredan el del contexto.
+        * Siempre son expresiones, no declaraciones.
+        
+        **Uso**: Callbacks, programación funcional, funciones cortas.
+        
+        ---
+        
+        ## 🔹 4. **Funciones anónimas**
+        
+        */
+        setTimeout(function () {
+            console.log("Ejecutado después de 2 segundos");
+        }, 2000);
+        /* <!-- ```
+        
+        ✅ **Características**:
+        
+        * No tienen nombre.
+        * Usadas como callbacks o funciones de un solo uso.
+        
+        **Uso**: Cuando no hace falta reutilizar la función.
+        
+        ---
+        
+        ## 🔹 5. **Funciones autoejecutadas (IIFE – Immediately Invoked Function Expressions)**
+        
+        */
+        (function () {
+            console.log("Se ejecuta inmediatamente");
+        })();
+        /* <!-- ```
+        
+        ✅ **Características**:
+        
+        * Se ejecutan justo después de definirse.
+        * Útiles para crear un ámbito aislado.
+        
+        **Uso**: Encapsular código, evitar contaminación del ámbito global.
+        
+        ---
+        
+        ## 🔹 6. **Funciones de flecha autoejecutadas (IIFE + Arrow)**
+        
+        */
+        (() => {
+            console.log("Arrow IIFE ejecutada");
+        })();
+        /*
+        
+        ✅ Igual que las IIFE normales, pero con sintaxis moderna.
+        
+        ---
+        
+        ## 🔹 7. **Funciones como métodos de objeto**
+        
+        */
+        const persona = {
+            nombre: "Jorge",
+            saludar() {
+                return `Hola, soy ${this.nombre}`;
+            }
+        };
+        console.log(persona.saludar()); // Hola, soy Jorge
+        /* <!-- ```
+        
+        ✅ **Características**:
+        
+        * Se definen dentro de objetos.
+        * Usan `this` para referirse al objeto.
+        
+        **Uso**: Métodos de clases u objetos literales.
+        
+        ---
+        
+        ## 🔹 8. **Funciones constructoras (Function Constructors)**
+        
+        */
+        function Persona(nombre) {
+            this.nombre = nombre;
+        }
+        const jorge = new Persona("Jorge");
+        console.log(jorge.nombre); // Jorge
+        /* <!-- ```
+        
+        ✅ **Características**:
+        
+        * Usadas con `new` para crear objetos.
+        * Hoy en día se prefieren **clases ES6**, pero siguen vigentes.
+        
+        **Uso**: Programación orientada a objetos.
+        
+        ---
+        
+        ## 🔹 9. **Funciones generadoras (Generators, `function*`)**
+        
+        */
+        function* contar() {
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+        const gen = contar();
+        console.log(gen.next().value); // 1
+        console.log(gen.next().value); // 2
+        /* <!-- ```
+        
+        ✅ **Características**:
+        
+        * Usan `function*` y `yield`.
+        * Devuelven un **iterador** que va produciendo valores bajo demanda.
+        
+        **Uso**: Iteraciones controladas, flujos de datos paso a paso.
+        
+        ---
+        
+        ## 🔹 10. **Funciones asíncronas (Async/Await)**
+        
+        */
+        async function obtenerDatos() {
+            return "Datos recibidos";
+        }
+        obtenerDatos().then(console.log); // Datos recibidos
+        /* <!-- ```
+        
+        ✅ **Características**:
+        
+        * Siempre devuelven una `Promise`.
+        * Usan `await` dentro para esperar resultados asíncronos.
+        
+        **Uso**: Operaciones asíncronas (APIs, lectura de archivos, etc.).
+        
+        ---
+        
+        ## 🔹 11. **Funciones como parámetros (Callbacks)**
+        
+        */
+        function procesar(nombre, callback) {
+            console.log(callback(nombre));
+        }
+        procesar("Jorge", n => `Hola ${n}`); // Hola Jorge
+        /* <!-- ```
+        
+        ✅ **Características**:
+        
+        * Pasar funciones a otras funciones.
+        * Clave en programación funcional.
+        
+        **Uso**: Eventos, promesas, procesamiento de datos.
+        
+        ---
+        
+        ## 📌 Resumen de los principales tipos
+        
+        1. Declaradas → para funciones globales.
+        2. Expresiones → más control sobre cuándo se usan.
+        3. Arrow → sintaxis corta, heredan `this`.
+        4. Anónimas → callbacks rápidos.
+        5. IIFE → ejecución inmediata y aislamiento.
+        6. Métodos → funciones dentro de objetos.
+        7. Constructoras → crear objetos (ahora reemplazadas por `class`).
+        8. Generadoras → control de iteraciones.
+        9. Asíncronas → operaciones no bloqueantes.
+        10. Callbacks → pasar funciones como valores.
+        
+        ---
+        
+        👉 ¿Querés que te arme un **mapa visual (esquema)** con todos estos tipos y ejemplos breves en un solo diagrama para que lo tengas como guía rápida?*/
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script lang="JavaScript">
+
+        // tipo de colección de datos estructurados
+        // sus datos se organizan en "clave":"valor"
+        // son valores iterables
+        // se pueden utilizar metodos como getter y setter
+        let mapa = new Map()
+        const mapaDatos = new Map([
+            ["nombre","kreeper"],
+            ["edad", "14"],
+            ["raza", "bodeguero andaluz"],
+            ["especie", "perro"]
+        ])
+
+        mapa.set("nombre","jorge")
+        mapa.set("apellido","della gaspera")
+        mapa.set("edad", 55)
+
+        console.log(mapa)
+        console.log(mapa.size)
+        console.log("Tiene key = nombre? ",mapa.has("nombre"))
+        console.log("Tiene key = correo?", mapa.has("correo"))
+
+        // desestructuracion del mapa
+        for (let [key, value] of mapa) {
+            console.log(`llave: ${key}, valor: ${value}`)
+        }
+
+        console.log(mapaDatos)
+        const llavesMapa2 = [...mapaDatos.keys()]
+        const valoresMapa2 = [...mapaDatos.values()]
+        console.log(`llaves: ${llavesMapa2}`)
+        console.log(`valores: ${valoresMapa2}`)
+
+        // iteradores e iterables
+        // iterador
+        const iterador = valoresMapa2[Symbol.iterator]()
+        let next = iterador.next();
+        while (!next.done) {
+            console.log(`valor ${next.value}`)
+            next = iterador.next()
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script lang="JavaScript">
+
+      let element = 10
+      let array = [9,8,7,6,5,4,3,2,1,0]
+      const persona = {
+          nombre: 'jorge',
+          apellido: 'della gaspera',
+          edad: 55,
+      }
+
+      for (let index = 0; index < array.length; index++) {
+          const element = array[index]
+          console.log(array[index]*3)
+      }
+
+      array.forEach(element => {
+          console.log('elementos: ',element+5)
+      })
+
+      for (const propiedad in persona) {
+          if (Object.prototype.hasOwnProperty.call(persona, propiedad)) {
+              const element = persona [propiedad]
+              console.log(`Key:${propiedad}, Value:${persona[propiedad]}`)
+            // el uso de [] para ver el valor de propiedad en cada objeto
+          }
+      }
+      
+      for (const element of array) {
+        console.log('Numero: ', element)
+      }
+
+      // FUNCTION DECLARADA NORMALES
+      function funcionDeclarada() {
+        console.log('Desde la llamada invoco esta función')
+      }
+
+      
+      function devuelveValor() {
+        return "llamamos una funcion que tenemos una cadena de text de retorno"
+      }
+      //funcionExpresada() no se pueda invocar antes de su declaración
+      // FUNCTION ANONIMAS FUNCION EXPRESADA
+      const funcionExpresada = function(){
+        console.log('Esta es una funcion expresada, se asigna a una variable')
+      }
+
+      // ARROW FUNCTION
+
+
+      // LLAMADAS O INVOCACIONES A LAS FUNCIONES
+      funcionDeclarada()
+      console.log(devuelveValor())
+      funcionExpresada()
+      console.log(funcionExpresada)
+      
+    </script>
+  </body>
+</html>

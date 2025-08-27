@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script lang="JavaScript">
+
+        // Asincronía en javascript
+
+        console.log('inicio')
+
+        // setInterval(() => {
+        //    console.log(new Date().toLocaleTimeString())
+        //}, 1000) // */
+
+        setTimeout(() => {
+            console.log('Ejecutando un setTimeout, después de 3 segundos, esto se ejecuta una sola vez')
+        }, 3000) // dura 3 segundos el tiempo seteado
+
+        let temporizador = setTimeout(() => {
+            console.log(new Date().toLocaleTimeString())
+        }, 20000)
+        
+        clearTimeout(temporizador)
+        console.log("despues del clear timeout")
+    </script>
+</body>
+
+</html>

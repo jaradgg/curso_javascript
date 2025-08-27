@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script lang="JavaScript">
+        // funciones promise y funciones asincronas trabajan en conjunto
+        
+        function cuadradoPromise(value) {
+            if (typeof value !== 'number') 
+            return Promise.reject(
+                `Error, el valor "${value}"ingresado no es un número`
+            )
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve({
+                        value,
+                        result: value * value
+                    })
+                }, 0 | Math.random() * 1000)
+            })
+        }
+
+        // función asincrona declarada
+        // async define funcion asincrona y await espera tener los datos antes de avanzar
+        async function funcionAsincrona(){
+            try {
+                console.log("inicio funcion asincrona")
+                let obj = await cuadradoPromise(0)
+                console.log(`Funcion Asincrona: ${obj.value}, ${obj.result}`)
+
+                obj = await cuadradoPromise(2)
+                console.log(`funcion asincrona: ${obj.value}, ${obj.result}`)
+            } catch (error) {
+                console.error(error)
+            }
+        }       
+
+        // función asincrona expresada
+        const funcionAsincronaExpresada = async () => {
+             try {
+                console.log("inicio funcion asincrona")
+                let obj = await cuadradoPromise(6)
+                console.log(`Funcion Asincrona: ${obj.value}, ${obj.result}`)
+
+                obj = await cuadradoPromise(9)
+                console.log(`funcion asincrona: ${obj.value}, ${obj.result}`)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        /* // llamada de la función promesa
+        cuadradoPromise(0)
+            .then((obj) => {
+                console.log('Inicio Promise')
+                console.log(`Promise: ${obj.value}, ${obj.result}`)
+                return cuadradoPromise(0)
+            })
+            .catch(err => console.error(err))
+         */            
+        // llamada de la funcion asincrona
+        funcionAsincrona()
+
+        funcionAsincronaExpresada()
+
+
+    </script>
+
+</body>
+</html>
