@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SpeechSynthesis Mejorado</title>
+</head>
+<body>
+  <h1>Ejemplo SpeechSynthesis</h1>
+  
+  <!-- Entrada de texto -->
+  <input id="texto" type="text" value="Anita ponete las pilas" size="40">
+  <br><br>
+
+  <!-- Selector de voces -->
+  <label for="voces">Seleccionar voz: </label>
+  <select id="voces"></select>
+  <br><br>
+
+  <!-- Botón -->
+  <button id="leer">🔊 Reproducir</button>
+
+  <script>
+    const boton = document.getElementById("leer");
+    const entradaTexto = document.getElementById("texto");
+    const selectorVoces = document.getElementById("voces");
+
+    let voces = [];
+
+    // Función para cargar voces disponibles
+    function cargarVoces() {
+      voces = window.speechSynthesis.getVoices();
+
+      // Evitar duplicados si se recarga
+      selectorVoces.innerHTML = "";
+
+      voces.forEach((voz, i) => {
+        let opcion = document.createElement("option");
+        opcion.value = i;
+        opcion.textContent = `${voz.name} (${voz.lang})`;
+        selectorVoces.appendChild(opcion);
+      });
+    }
+
+    // En algunos navegadores las voces llegan asincrónicamente
+    window.speechSynthesis.onvoiceschanged = cargarVoces;
+
+    // Botón para hablar
+    boton.addEventListener("click", () => {
+      let texto = entradaTexto.value.trim();
+      if (!texto) {
+        alert("Escribe algo primero 😉");
+        return;
+      }
+
+      // Crear objeto de síntesis
+      let mensaje = new SpeechSynthesisUtterance(texto);
+
+      // Configuración básica
+      mensaje.pitch = 1;   // tono
+      mensaje.rate = 1;    // velocidad
+      mensaje.volume = 1;  // volumen
+
+      // Asignar voz seleccionada
+      let vozSeleccionada = voces[selectorVoces.value];
+      if (vozSeleccionada) {
+        mensaje.voice = vozSeleccionada;
+      }
+
+      // Detener cualquier síntesis en curso antes de iniciar otra
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(mensaje);
+    });
+
+    // Llamar una vez al inicio
+    cargarVoces();
+  </script>
+</body>
+</html>
