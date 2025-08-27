@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>WEB APIs</h1>
+    <h2>DOM: Browser Object Model</h2>
+    <h2>BOM: Boruwer Object Model</h2>
+    <h2>CSSOM: Css Object Model</h2>
+    <h2>WEB APIs</h2>
+    <ul>
+        <li>Eventos</li>
+        <li>Forms</li>
+        <li>AJAX - Fetch</li>
+        <li>History</li>
+        <li>Web Storage</li>
+        <li>Geolocation</li>
+        <li>Drag & Drop</li>
+        <li>Indexed DB</li>
+        <li>Canvas</li>
+        <li>MatchMedia</li>
+        <li>etc...</li>
+    </ul>
+    <button onclick="hablar">hablar</button>
+    <script>
+        function hablar() {
+            let texto = "Hola Anita, estás cansada? ¡Ponete las pilas!";
+            let mensaje = new SpeechSynthesisUtterance(texto);
+
+            mensaje.lang = "es-ES"; // Idioma en español
+            mensaje.rate = 1;       // Velocidad
+            mensaje.pitch = 1;      // Tono
+
+            console.log(speechSynthesis.getVoices())
+
+            speechSynthesis.speak(mensaje);
+            let voces = speechSynthesis.getVoices();
+            //let mensaje = new SpeechSynthesisUtterance("Probando, 1, 2, 3");
+            mensaje.voice = voces.find(voz => voz.lang === "es-ES");
+            speechSynthesis.speak(mensaje);
+
+            let utterance = new SpeechSynthesisUtterance("Hello world!");
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+
+</html>

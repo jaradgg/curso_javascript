@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // metodos para conservar la referencia de un objeto
+        console.log(this)
+        this.lugar = "Contexto Global"
+
+        function saludar(saludo, aQuien){
+            console.log(`${saludo} ${aQuien} ${this.lugar}`)
+        }
+
+        saludar("Hola", "Kreeper")
+
+        const obj = {
+            lugar: "Contexto Objeto"
+        }
+
+        saludar.call(obj, "Hola", "Jorge")
+
+        saludar.apply(obj, ["Adios ", "Jorge"])
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // THIS
+      // this hace referencia al objeto global
+      // this en los navegadores hace contexto a window
+
+      //nombro al contexto global
+      this.nombre = 'Contexto Alcance Global'
+      console.log(this.nombre) // imprime Contexto Alcance Global
+
+      function imprimir() {
+        console.log(this.nombre)
+      }
+
+      //debe imprimir el nombre del objeto de alcance global
+      imprimir() // imprme Contexto Alcance Global
+
+      // genero un objeto local
+      const objetoGlobal1 = {
+        //propiedad del objeto global 1 una funcion anónima
+        nombre: 'Contexto Objeto 1',
+        imprimir: function () {
+          console.log(this.nombre)
+        }
+      }
+
+      // accedo a la propiedad del objeto global 1
+      objetoGlobal1.imprimir() // imprime Contexto Objeto 1
+
+      // defino otro objeto global 2 y agrego una propiedad con dos elementos
+      const objetoGlobal2 = {
+        nombre: 'Contexto Objeto 2',
+        imprimir: imprimir
+      }
+
+      objetoGlobal2.imprimir() // imprieme Contexto Objeto 2
+
+      // defino otro objeto global 2 y agrego una propiedad con dos elementos
+      const objetoGlobal3 = {
+        nombre: 'Contexto Objeto 3',
+        imprimir: () => {
+          console.log(this.nombre)
+        }
+      }
+      // la arrow function toma el contexto del padre window, no del objeto
+      objetoGlobal3.imprimir() // imprime Contexto Global
+
+      // funcion constructora pero para objetos
+      function Persona(nombre) {
+        this.nombre= nombre
+        //return console.log(this.nombre) on arrow function
+        return () => {
+          console.log(this.nombre) // imprime Jorge
+        }
+      }
+
+      let jon = new Persona('Jorge')
+      jon()
+    </script>
+  </body>
+</html>

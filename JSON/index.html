@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // formato de datos en JSON anteriormente se usaba XML
+      // acepta tipos de datos objeto
+
+      const constJson = {
+        cadena: 'jorge',
+        numero: 55,
+        booleano: true,
+        arreglo: ['correr', 'programar', 'cocinar'],
+        objeto: { twitter: '@jonmircha', email: 'jonmircha@gmail.com' },
+        nulo: null
+      }
+
+      console.log(JSON)
+      console.log(JSON.stringify(constJson))
+      jsonFile = JSON.stringify(constJson)
+      console.log(jsonFile)
+
+      const persona = {
+        nombre: 'Ana',
+        edad: 28,
+        activo: true
+      }
+
+      const jsonString = JSON.stringify(persona)
+      console.log(JSON.parse(jsonString))
+    </script>
+  </body>
+</html>

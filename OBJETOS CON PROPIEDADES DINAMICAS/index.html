@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // OBJETOS CON PROPIEDADES DINÁMICAS
+
+        let aleatorio = Math.round(Math.random()*100 + 5)
+
+        const objUsuarios = {
+            propieadd:"Valor",
+            [`id_${aleatorio}`]:"valor aleatorio"
+        }
+
+        console.log(objUsuarios)
+
+        const usuarios = ["jorge", "Renzo", "Ana", "Alberto", "Andres", "Cristina"]
+        
+        usuarios.forEach((usuario, index) => objUsuarios[`id_${index}`] = usuario)
+        
+        console.log(objUsuarios)
+
+    </script>
+
+</body>
+</html>
